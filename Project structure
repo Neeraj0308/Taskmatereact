@@ -1,0 +1,12 @@
+taskmate/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── TaskInput.jsx
+│   │   ├── TaskItem.jsx
+│   │   └── TaskList.jsx
+│   ├── App.jsx
+│   ├── index.js
+│   └── styles.css
+└── README.md
