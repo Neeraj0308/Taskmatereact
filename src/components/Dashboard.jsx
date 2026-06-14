@@ -28,10 +28,12 @@ export default function Dashboard({ items, onClear }) {
                 <div style={{fontWeight:600}}>{it.text}</div>
                 <div className="time-label">Time: {formatMs(it.timeSpent)}</div>
                 <div className="time-label">Created: {it.createdAt ? new Date(it.createdAt).toLocaleString() : '—'}</div>
+                <div className="time-label">Category: {it.category || '—'}</div>
+                <div className="time-label">Priority: {it.priority || 'Medium'}</div>
                 <div className="time-label">Due: {it.dueAt ? new Date(it.dueAt).toLocaleString() : '—'}</div>
+                <div className="time-label">End time: {it.endAt ? new Date(it.endAt).toLocaleString() : '—'}</div>
               </div>
               <div style={{textAlign:'right'}}>
-                <div style={{fontSize:12,color: it.withinEstimate ? '#10b981' : '#ef4444', fontWeight:600}}>{it.withinEstimate ? 'Within estimate' : 'Over estimate'}</div>
                 <div style={{fontSize:12,color:'#64748b',marginTop:6}}>Completed: {new Date(it.completedAt).toLocaleString()}</div>
               </div>
             </div>
