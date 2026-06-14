@@ -1,0 +1,109 @@
+:root{
+  --bg-1: linear-gradient(135deg,#f6d365 0%,#fda085 100%);
+  --panel-bg: rgba(255,255,255,0.85);
+  --card-bg: #ffffff;
+  --muted: #64748b;
+  --accent: #7c3aed;
+  --accent-2: #06b6d4;
+  --shadow: 0 6px 18px rgba(15,23,42,0.12);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-1);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:3rem 1rem;
+}
+
+.app-container{
+  width:100%;
+  max-width:720px;
+  background: var(--panel-bg);
+  border-radius:14px;
+  padding:2rem;
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.app-header{
+  text-align:center;
+  margin-bottom:1rem;
+}
+.app-header .controls{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.app-title{
+  font-size:1.75rem;
+  margin:0;
+  color:#0f172a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+}
+.app-sub{
+  color:var(--muted);
+  font-size:0.95rem;
+  margin-top:6px;
+}
+
+.input-form{display:flex;gap:0.5rem;margin-bottom:1rem}
+.input-field{
+  flex:1;padding:.65rem .75rem;border-radius:10px;border:1px solid rgba(15,23,42,0.06);background:rgba(255,255,255,0.9);
+  box-shadow: 0 2px 6px rgba(2,6,23,0.04);
+  font-size:1rem;outline:none;
+}
+.input-field:focus{box-shadow:0 6px 18px rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.25)}
+.btn-add{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;border:none;padding:.6rem .9rem;border-radius:10px;cursor:pointer;font-weight:600;box-shadow:0 6px 14px rgba(124,58,237,0.18)
+}
+.btn-add:hover{transform:translateY(-2px)}
+
+.tasks-empty{text-align:center;color:var(--muted);padding:1rem}
+.task-list{display:flex;flex-direction:column;gap:.5rem}
+.task-card{
+  display:flex;align-items:center;justify-content:space-between;padding:.65rem .75rem;background:var(--card-bg);border-radius:10px;box-shadow:0 4px 10px rgba(2,6,23,0.04);
+}
+.time-label{font-size:0.85rem;color:var(--muted);margin-top:4px}
+.theme-toggle{padding:.35rem .6rem}
+.overdue-badge{color:#ef4444;font-weight:700;font-size:12px;margin-left:8px}
+.task-left{display:flex;align-items:center;gap:.75rem;flex:1}
+.task-checkbox{width:18px;height:18px;border-radius:6px;border:1.5px solid rgba(15,23,42,0.08);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.task-text{font-size:0.98rem;color:#0f172a}
+.task-text.completed{color:var(--muted);text-decoration:line-through;opacity:.8}
+.btn-delete{background:transparent;border:none;color:#ef4444;cursor:pointer;font-size:1rem;padding:.25rem}
+
+@media (max-width:520px){
+  .app-container{padding:1rem;border-radius:12px}
+  .app-title{font-size:1.3rem}
+}
+
+/* Dark theme overrides when container has .theme-dark */
+.app-container.theme-dark{
+  --panel-bg: rgba(6,8,15,0.7);
+  --card-bg: #071127;
+  --muted: #94a3b8;
+  color: #e6eef8;
+  background: linear-gradient(135deg,#0f172a 0%,#0b1220 100%);
+}
+.app-container.theme-dark .app-sub{color:var(--muted)}
+.app-container.theme-dark .input-field{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.04);color:var(--muted)}
+.app-container.theme-dark .btn-add{box-shadow:0 6px 14px rgba(12,74,110,0.12)}
+.app-container.theme-dark .task-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))}
+
+/* Theme toggle */
+.theme-toggle{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:.4rem .6rem;border-radius:10px;cursor:pointer;font-size:0.95rem}
+.app-header .controls{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:8px}
+
+/* Animations */
+.task-card{transition:transform .18s ease,opacity .18s ease}
+.task-card{animation:pop .18s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.995)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.btn-add:active{transform:translateY(0)}
